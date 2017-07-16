@@ -1,0 +1,133 @@
+space 825692
+space 1924
+
+space 497
+space 1432
+space 496
+space 1446
+space 495
+space 1430
+space 497
+space 1432
+[0]
+
+space 511
+space 1430
+space 497
+space 1457
+space 1445
+space 511
+space 1432
+space 498
+[1]
+
+space 1432
+space 1433
+space 1433
+space 1445
+space 498
+space 497
+space 1430
+space 1430
+[2]
+
+space 496
+space 496
+space 496
+space 497
+space 1433
+space 498
+space 495
+space 496
+[3]
+
+space 1430
+space 1431
+space 494
+space 496
+space 497
+space 497
+space 496
+space 511
+[4] 11000000 c0 // temperature
+
+space 1456
+space 514
+space 500
+space 495
+space 1433
+space 495
+space 495
+space 495
+[5] 10001000 88 // state
+
+space 1431
+space 495
+space 495
+space 559
+space 511
+space 1431
+space 497
+space 497
+[6] 10000100 84 // mode, fan strength
+
+space 513
+space 497
+space 496
+space 1431
+space 1445
+space 496
+space 522
+space 495
+[7] 00011000 18
+
+space 496
+space 510
+space 497
+space 1431
+space 498
+space 493
+space 494
+space 497
+[8] 00010000 10 // rotate
+
+space 494
+space 459
+space 496
+space 496
+space 496
+space 495
+space 496
+space 1435
+[9] 00000001 01
+
+space 491
+space 493
+space 495
+space 496
+space 496
+space 496
+space 494
+space 497
+[10] 00000000 00
+
+space 496
+space 504
+space 496
+space 514
+space 1430
+space 1432
+space 1433
+space 1430
+[11] 00001111 0f // ion
+
+space 1457
+space 495
+space 496
+space 496
+space 497
+space 1437
+space 495
+space 1431
+
+[12] 10000101 85

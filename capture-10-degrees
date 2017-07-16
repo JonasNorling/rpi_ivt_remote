@@ -1,0 +1,132 @@
+space 1922
+
+space 469
+space 1416
+space 471
+space 1413
+space 447
+space 1413
+space 465
+space 1415
+[0]
+
+space 468
+space 1418
+space 467
+space 1414
+space 1414
+space 479
+space 1406
+space 481
+[1]
+
+space 1413
+space 1417
+space 1421
+space 1446
+space 472
+space 464
+space 1424
+space 1418
+[2]
+
+space 469
+space 469
+space 465
+space 474
+space 1412
+space 485
+space 518
+space 486
+[3]
+
+space 471
+space 472
+space 468
+space 473
+space 476
+space 466
+space 470
+space 479
+[4] 00000000 00 // temperature
+
+space 1414
+space 476
+space 461
+space 469
+space 1410
+space 1416
+space 478
+space 469
+[5] 10001100 8c // state
+        sss - 110 = command
+
+space 1413
+space 471
+space 467
+space 480
+space 473
+space 1456
+space 461
+space 469
+[6] 10000100 84
+
+space 1414
+space 461
+space 1418
+space 478
+space 468
+space 477
+space 467
+space 468
+[7] 10100000 a0
+
+space 498
+space 478
+space 456
+space 1417
+space 455
+space 475
+space 477
+space 381
+[8] 00010000 10
+
+space 464
+space 462
+space 468
+space 462
+space 466
+space 519
+space 484
+space 1417
+[9] 00000001 01
+
+space 461
+space 471
+space 1412
+space 465
+space 463
+space 459
+space 469
+space 470
+[10] 00100000 20
+
+space 480
+space 468
+space 480
+space 470
+space 1410
+space 1417
+space 1416
+space 1415
+[11] 00001111 0f
+
+space 1416
+space 458
+space 462
+space 467
+space 1411
+space 1426
+space 484
+space 488
+[12] 10001100 8c

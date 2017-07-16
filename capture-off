@@ -1,0 +1,138 @@
+space 2141966
+P space 1925
+
+space 496
+space 1458
+space 490
+space 1433
+space 490
+space 1433
+space 494
+space 1431
+[0] 01010101 55 // sync word
+
+space 494
+space 1434
+space 514
+space 1431
+space 1431
+space 495
+space 1432
+space 490
+[1] 01011010 5a // sync word
+
+space 1413
+space 1389
+space 1457
+space 1431
+space 496
+space 512
+space 1429
+space 1432
+[2] 11110011 f3 // sync word
+
+space 496
+space 496
+space 490
+space 495
+space 1459
+space 496
+space 497
+space 513
+[3] 00001000 08 // sync word
+
+space 1430
+space 1433
+space 498
+space 495
+space 497
+space 496
+space 496
+space 523
+[4] 11000000 c0 // temperature
+    ttttrr s
+
+space 1432
+space 495
+space 495
+space 495
+space 495
+space 1433
+space 497
+space 506
+[5] 10000100 84 // state
+        sss
+        010 = off
+
+space 1433
+space 497
+space 521
+space 497
+space 495
+space 1429
+space 495
+space 495
+[6] 10000100 84 // mode, fan strength
+    mm  fff
+    10 = heat
+        010 = auto
+
+space 496
+space 494
+space 496
+space 1430
+space 1431
+space 496
+space 494
+space 507
+[7] 00011000 18 // time hours
+
+space 497
+space 495
+space 493
+space 1434
+space 496
+space 498
+space 495
+space 495
+[8] 00010000 10 // rotate
+
+space 494
+space 496
+space 495
+space 496
+space 494
+space 496
+space 496
+space 1417
+[9] 00000001 01
+
+space 494
+space 496
+space 495
+space 494
+space 499
+space 495
+space 523
+space 495
+[10] 00000000 00 // time minutes
+
+space 494
+space 496
+space 496
+space 496
+space 1431
+space 1431
+space 1428
+space 1446
+[11] 00001111 0f // ion
+
+space 1457
+space 497
+space 495
+space 496
+space 1433
+space 496
+space 495
+space 1429
+[12] 10001001 89
