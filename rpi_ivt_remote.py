@@ -24,7 +24,9 @@ def reverse(n, bits):
     return o
 
 def encode_temperature(in_t):
-    if in_t < 18 or in_t > 32:
+    if in_t == 10:
+        in_t = 17 # Special case
+    elif in_t < 18 or in_t > 32:
         raise ValueError("Bad temperature")
     t = in_t - 17
     return reverse(t, 4)
