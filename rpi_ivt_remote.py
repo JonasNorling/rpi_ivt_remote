@@ -69,6 +69,9 @@ if __name__ == "__main__":
     parser.add_argument("-t", metavar="TEMP", type=int, help="Set temperature")
     parser.add_argument("--off", help="Turn off", action="store_true")
     parser.add_argument("--on", help="Turn on", action="store_true")
+    parser.add_argument("--autofan", help="Set fan to auto power", action="store_true")
+    parser.add_argument("--fan", help="Fan speed (1,2,3)", type=int)
+    parser.add_argument("--ion", help="Engage ion thrusters", action="store_true")
 
     args = parser.parse_args()
     
@@ -99,6 +102,20 @@ if __name__ == "__main__":
         if args.t is None:
             parser.error("Missing temperature")
         message[4] = encode_temperature(args.t) << 4
+        if args.autofan:
+            fan_value = 0x2
+        elif args.fan == 1:
+            fan_value = 0x6
+        elif args.fan == 2:
+            fan_value = 0x5
+        elif args.fan == 3:
+            fan_value = 0x7
+        else:
+            parser.error("Missing fan speed")
+        message[6] = 0x80 | (fan_value << 1)
+
+    if args.ion:
+        message[11] = 0x2f
 
     message[12] = 0x80 | calculate_parity(message)
     send_message(message)
