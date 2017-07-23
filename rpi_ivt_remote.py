@@ -55,28 +55,15 @@ def encode(message):
 
 # Hand off the message to the LIRC kernel module
 def send_message(message):
-    log.info("Sending %s" % ["%02x" % n for n in message])
+    log = logging.getLogger("rpi_ivt_remote")
+    log.debug("Sending %s" % ["%02x" % n for n in message])
     pulses = encode(message)
     with open("/dev/lirc0", "w") as lirc:
         encoded = struct.pack("=%di" % len(pulses), *pulses)
         lirc.write(encoded)
 
-if __name__ == "__main__":
-    logging.basicConfig(level=logging.INFO)
-    log = logging.getLogger("rpi_ivt_remote")
-
-    description = "Control IVT Nordic Inverter heat pump over the IR interface"
-    parser = argparse.ArgumentParser(description=description)
-
-    parser.add_argument("-t", metavar="TEMP", type=int, help="Set temperature")
-    parser.add_argument("--off", help="Turn off", action="store_true")
-    parser.add_argument("--on", help="Turn on", action="store_true")
-    parser.add_argument("--autofan", help="Set fan to auto power", action="store_true")
-    parser.add_argument("--fan", help="Fan speed (1,2,3)", type=int)
-    parser.add_argument("--ion", help="Engage ion thrusters", action="store_true")
-
-    args = parser.parse_args()
-    
+# Encode and send a command
+def send_command(on=False, temp=20, fan=2, ion=False):
     message = [
         0x55, # preamble/sync
         0x5a, # preamble/sync
@@ -93,17 +80,48 @@ if __name__ == "__main__":
         0x80, # CRC
         ]
 
-    if args.off:
-        message[5] = 0x84
-    elif args.on:
+    message[4] = encode_temperature(temp) << 4
+    if on:
         message[5] = 0x88
     else:
+        message[5] = 0x84
+    message[6] = 0x80 | (fan << 1)
+    if ion:
+        message[11] = 0x2f
+    message[12] = 0x80 | calculate_parity(message)
+
+    send_message(message)    
+
+if __name__ == "__main__":
+    logging.basicConfig(level=logging.DEBUG)
+
+    description = "Control IVT Nordic Inverter heat pump over the IR interface"
+    parser = argparse.ArgumentParser(description=description)
+
+    parser.add_argument("-t", metavar="TEMP", type=int, help="Set temperature")
+    parser.add_argument("--off", help="Turn off", action="store_true")
+    parser.add_argument("--on", help="Turn on", action="store_true")
+    parser.add_argument("--autofan", help="Set fan to auto power", action="store_true")
+    parser.add_argument("--fan", help="Fan speed (1,2,3)", type=int)
+    parser.add_argument("--ion", help="Engage ion thrusters", action="store_true")
+
+    args = parser.parse_args()
+    
+    if args.off:
+        on = False
+    elif args.on:
+        on = True
+    else:
         parser.error("Not on nor off")
+
+    temp = None
+    ion = None
+    fan = None
 
     if args.on:
         if args.t is None:
             parser.error("Missing temperature")
-        message[4] = encode_temperature(args.t) << 4
+        temp = args.t
         if args.autofan:
             fan_value = 0x2
         elif args.fan == 1:
@@ -114,10 +132,5 @@ if __name__ == "__main__":
             fan_value = 0x7
         else:
             parser.error("Missing fan speed")
-        message[6] = 0x80 | (fan_value << 1)
 
-    if args.ion:
-        message[11] = 0x2f
-
-    message[12] = 0x80 | calculate_parity(message)
-    send_message(message)
+    send_command(on=on, temp=temp, fan=fan_value, ion=args.ion)
