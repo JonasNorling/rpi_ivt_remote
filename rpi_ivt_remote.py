@@ -114,9 +114,9 @@ if __name__ == "__main__":
     else:
         parser.error("Not on nor off")
 
-    temp = None
-    ion = None
-    fan = None
+    temp = 18
+    ion = False
+    fan_value = 0x2
 
     if args.on:
         if args.t is None:
