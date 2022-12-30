@@ -1,0 +1,8 @@
+[project]
+name = "rpi_ivt_remote"
+version = "1.0.0"
+dependencies = [
+]
+
+[project.scripts]
+rpi_ivt_remote = "rpi_ivt_remote.rpi_ivt_remote:run"
